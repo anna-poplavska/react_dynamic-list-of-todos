@@ -13,7 +13,7 @@ import { Filter } from './types/Filter';
 import { getTodos } from './api';
 
 export const App: React.FC = () => {
-  const [todos, setTodos] = useState<Todo[] | []>([]);
+  const [todos, setTodos] = useState<Todo[]>([]);
   const [activeTodo, setActiveTodo] = useState<Todo | null>(null);
   const [loader, setLoader] = useState(false);
   const [filter, setFilter] = useState<Filter>('all');
@@ -66,7 +66,7 @@ export const App: React.FC = () => {
 
             <div className="block">
               {loader && <Loader />}
-              {visibleTodos && (
+              {visibleTodos.length > 0 && (
                 <TodoList
                   todos={visibleTodos}
                   activeTodo={activeTodo}
